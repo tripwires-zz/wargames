@@ -10,7 +10,7 @@ namespace Tripwires.Games.Wargames.Lib.Types
     {
         public enum CityState
         {
-            UnInhabited,
+            Uninhabited,
             Friendly,
             Enemy
         }

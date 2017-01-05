@@ -22,7 +22,7 @@ namespace Tripwires.Games.Wargames.Lib.Business
         public City(string name)
         {
             this.Name = name;
-            this.State = Enums.CityState.UnInhabited;
+            this.State = Enums.CityState.Uninhabited;
             this.Days = 0;
         }
         public void tick()

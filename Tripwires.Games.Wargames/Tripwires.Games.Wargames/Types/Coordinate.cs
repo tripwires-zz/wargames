@@ -8,9 +8,22 @@ namespace Tripwires.Games.Wargames.Lib.Types
 {
     public class Coordinate
     {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public Coordinate(int x,int y)
+        /// <summary>
+        /// X value of a Coordinate
+        /// </summary>
+        public Decimal X { get; set; }
+
+        /// <summary>
+        /// Y value of a Coordinate
+        /// </summary>
+        public Decimal Y { get; set; }
+
+        /// <summary>
+        /// constructor for a coordinate that accepts an x and y value
+        /// </summary>
+        /// <param name="x">X value of a Coordinate</param>
+        /// <param name="y">Y value of a Coordinate</param>
+        public Coordinate(Decimal x,Decimal y)
         {
             this.X = x;
             this.Y = y;
@@ -21,19 +34,14 @@ namespace Tripwires.Games.Wargames.Lib.Types
         /// </summary>
         /// <param name="c">an other coordinate</param>
         /// <returns>a value that is the difference</returns>
-        public int CalculateDistance(Coordinate c)
+        public Decimal CalculateDistance(Coordinate c)
         {
-            int diffX = this.MakePositive(this.X - c.X);
-            int diffY = this.MakePositive(this.Y - c.Y);
+            //since we're going to pow these variables no need to figure out if they are positive or not
+            Decimal diffX = this.X - c.X;
+            Decimal diffY = this.Y - c.Y;
             //http://www.mathwarehouse.com/geometry/triangles/triangle-formulas.php
-            return (int)Math.Floor(Convert.ToDecimal((Math.Sqrt(Math.Pow(diffX,2) + Math.Pow(diffY,2)))));
+            return Math.Floor(Convert.ToDecimal((Math.Sqrt(Math.Pow((int)diffX,2) + Math.Pow((int)diffY,2)))));
 
-        }
-        private int MakePositive(int value)
-        {
-            int result = value;
-            result = (result < 0) ? -result : result;
-            return result;
         }
     }
 }
